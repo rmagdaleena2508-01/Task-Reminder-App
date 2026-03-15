@@ -1,304 +1,171 @@
-# Task Reminder App 📝✨
+# Student Grade Tracker
 
-A console-based Task Reminder application built with **Dart** to demonstrate asynchronous programming concepts including `Future`, `async`, and `await`, with **task completion tracking**.
+A simple and clean Flutter application built as a course project to demonstrate core mobile app development concepts. The app features an intro welcome screen and a login screen with form validation.
 
-## 📋 Project Overview
+---
 
-This mini project is developed as part of an App Development course, focusing on Dart fundamentals and asynchronous programming patterns essential for modern mobile application development.
+## App Overview
 
-The application simulates real-world scenarios where apps interact with remote servers or databases through delayed asynchronous operations.
+The app consists of **two screens**:
 
-## ✨ Features
+1. **Intro Screen** — A welcome page with the app name, feature highlights, and a "Get Started" button that navigates to the login screen.
+2. **Login Screen** — A form-based login page with email and password fields, input validation, password visibility toggle, and credential verification.
 
-### 1. **Task Model**
-- Custom `Task` class with properties:
-  - **Title**: Name of the task
-  - **Description**: Detailed information about the task
-  - **Due Date**: Deadline for task completion
-  - **Completion Status**: Track if task is completed or pending
-- Object-oriented design with constructors and methods
+### Demo Credentials
 
-### 2. **Asynchronous Task Loading**
-- Simulates fetching tasks from a database/API
-- Uses `Future.delayed()` with 3-second delay
-- Implements `async` and `await` keywords
-- Includes error handling with try-catch blocks
+| Email | Password |
+|---|---|
+| admin@university.edu | admin123 |
 
-### 3. **Add New Task**
-- Asynchronous function to create and save new tasks
-- Simulates network delay for save operation
-- User input validation
-- Dynamic task list management
+---
 
-### 4. **Task Display Logic**
-- Display all tasks after asynchronous loading
-- View detailed information for individual tasks
-- Proper execution flow using await
-- Real-time task list updates
+## Screenshots
 
-### 5. **🆕 Task Completion Feature**
-- Mark tasks as completed with async operation
-- Separate tracking for pending and completed tasks
-- Completed tasks moved to dedicated list
-- Completed tasks removed from active/current tasks view
-- 3-second delay simulation for database update
+| Intro Screen | Login Screen | Validation |
+|---|---|---|
+| ![Intro](screenshots/intro.png) | ![Login](screenshots/login.png) | ![Validation](screenshots/validation.png) |
 
-### 6. **View Completed Tasks**
-- Dedicated menu option to view all completed tasks
-- Shows completion status with visual indicators (✅)
-- Displays total count of completed tasks
-- Async loading with 2-second delay
+> Add your own screenshots by creating a `screenshots/` folder in the root of the project.
 
-### 7. **Interactive Menu System**
-- User-friendly console interface
-- 7 menu options:
-  1. Load all tasks from "database"
-  2. Add new custom tasks
-  3. View specific task details
-  4. **Display current (pending) tasks only**
-  5. **Mark task as done** ⭐ NEW
-  6. **View completed tasks** ⭐ NEW
-  7. Exit application with summary
+---
 
-## 🎯 Learning Objectives
+## Project Structure
 
-This project demonstrates:
-- ✅ Dart language fundamentals (variables, functions, classes, lists)
-- ✅ Future and asynchronous operations
-- ✅ async and await keywords usage
-- ✅ Error handling in asynchronous code
-- ✅ Real-world application logic simulation
-- ✅ Clean and modular code structure
-- ✅ State management with multiple lists
-- ✅ Boolean flags for tracking status
+```
+lib/
+├── main.dart                  # App entry point - MaterialApp setup
+└── screens/
+    ├── intro_screen.dart      # Welcome screen (StatelessWidget)
+    └── login_screen.dart      # Login screen (StatefulWidget)
+```
 
-## 🚀 How to Run
+---
+
+## Flutter Concepts Used
+
+### Widgets
+
+| Widget | Where Used | Purpose |
+|---|---|---|
+| `Scaffold` | Both screens | Base page structure |
+| `AppBar` | Login screen | Top bar with title and back button |
+| `Column` | Both screens | Vertical arrangement of elements |
+| `Row` | Both screens | Horizontal arrangement (icon + text pairs) |
+| `Container` | Both screens | Styling with padding, color, and border radius |
+| `Text` | Both screens | Displaying titles, labels, and hints |
+| `Icon` | Both screens | Visual icons (school, email, lock, etc.) |
+| `SizedBox` | Both screens | Adding spacing between widgets |
+| `Padding` | Both screens | Adding padding around widgets |
+| `ElevatedButton` | Both screens | "Get Started" and "Login" buttons |
+| `TextFormField` | Login screen | Email and password input fields |
+| `IconButton` | Login screen | Password visibility toggle |
+| `SingleChildScrollView` | Both screens | Makes content scrollable |
+| `SnackBar` | Login screen | Success and error messages |
+
+### Core Concepts
+
+| Concept | Where Used | What It Does |
+|---|---|---|
+| `StatelessWidget` | Intro screen | Screen with no changing state |
+| `StatefulWidget` | Login screen | Screen with state that changes (password toggle) |
+| `setState()` | Login screen | Toggles password visibility on/off |
+| `Navigator.push()` | Intro screen | Navigates forward from intro to login |
+| `Navigator.pop()` | Login screen | Navigates back from login to intro |
+| `MaterialPageRoute` | Intro screen | Defines the route for navigation |
+| `Form` | Login screen | Wraps input fields for validation |
+| `GlobalKey<FormState>` | Login screen | Key to trigger form validation |
+| `TextEditingController` | Login screen | Reads text from email and password fields |
+| `validator` | Login screen | Checks if email and password are valid |
+| `obscureText` | Login screen | Hides password characters |
+| `BoxDecoration` | Both screens | Adds rounded corners, background color |
+| `BorderRadius` | Both screens | Rounds corners on containers and buttons |
+| `ScaffoldMessenger` | Login screen | Shows SnackBar messages |
+
+---
+
+## App Flow
+
+```
+main.dart
+  └── MyApp (StatelessWidget)
+        └── MaterialApp
+              └── IntroScreen (StatelessWidget)
+                    │
+                    │  [User taps "Get Started"]
+                    │  Navigator.push()
+                    ▼
+              LoginScreen (StatefulWidget)
+                    │
+                    │  [User taps back arrow]
+                    │  Navigator.pop()
+                    ▼
+              IntroScreen
+```
+
+---
+
+## How to Run
 
 ### Prerequisites
-- Dart SDK installed on your system
-- Basic understanding of command line/terminal
+
+- Flutter SDK installed ([flutter.dev/docs/get-started/install](https://flutter.dev/docs/get-started/install))
+- VS Code with Flutter extension (or Android Studio)
+- An emulator or physical device
 
 ### Steps
 
-1. **Clone this repository**
+1. **Create the project**
    ```bash
-   git clone <your-repository-url>
-   cd task-reminder-app
+   flutter create student_tracker
+   cd student_tracker
    ```
 
-2. **Run the application**
+2. **Replace the `lib/` folder** with the files from this repository
+
+3. **Run the app**
    ```bash
-   dart task_reminder_app_with_completion.dart
+   flutter run
    ```
-
-3. **Follow the on-screen menu**
-   - Choose option 1 to load sample tasks
-   - Choose option 2 to add your own tasks
-   - Choose option 3 to view task details
-   - Choose option 4 to see current pending tasks
-   - Choose option 5 to mark tasks as done ⭐
-   - Choose option 6 to view completed tasks ⭐
-   - Choose option 7 to exit
-
-## 📦 Project Structure
-
-```
-task-reminder-app/
-│
-├── task_reminder_app_with_completion.dart    # Enhanced main application
-├── README.md                                  # Project documentation
-└── GitHub_Link.txt                           # Repository URL
-```
-
-## 💻 Core Concepts Covered
-
-### Dart Basics
-- Variables and data types
-- Functions and methods
-- Classes and objects
-- Lists and collections
-- Boolean properties
-- User input/output
-
-### Asynchronous Programming
-- `Future<T>` type
-- `async` function modifier
-- `await` keyword
-- `Future.delayed()` for simulation
-- Try-catch error handling
-
-### State Management
-- Multiple list management
-- Task status tracking
-- Dynamic list operations (add, remove)
-
-## 🔧 Technical Implementation
-
-### Task Class Enhancement
-```dart
-class Task {
-  String title;
-  String description;
-  DateTime dueDate;
-  bool isCompleted;  // NEW: Track completion status
-  
-  Task({
-    required this.title,
-    required this.description,
-    required this.dueDate,
-    this.isCompleted = false,  // Default to pending
-  });
-}
-```
-
-### Dual List System
-```dart
-List<Task> taskList = [];           // Pending tasks
-List<Task> completedTaskList = [];  // Completed tasks
-```
-
-### Mark Task as Completed (Async)
-```dart
-Future<void> markTaskAsCompleted(int taskIndex) async {
-  await Future.delayed(Duration(seconds: 3));  // Simulate DB update
-  
-  Task taskToComplete = taskList[taskIndex];
-  taskToComplete.isCompleted = true;
-  
-  completedTaskList.add(taskToComplete);  // Add to completed
-  taskList.removeAt(taskIndex);            // Remove from pending
-}
-```
-
-### Sample Tasks
-The application comes with 5 pre-loaded sample tasks:
-1. Complete Dart Assignment
-2. Study Flutter Basics
-3. Attend App Development Class
-4. Submit GitHub Repository
-5. Prepare Project Documentation
-
-### Asynchronous Operations
-All I/O operations simulate real-world delays:
-- **Fetch tasks**: 3-second delay
-- **Add task**: 3-second delay
-- **Mark as completed**: 3-second delay
-- **View details**: 2-second delay
-- **View completed tasks**: 2-second delay
-
-## 📸 Example User Flow
-
-```
-1. User loads tasks (Option 1)
-   → 5 pending tasks displayed
-
-2. User marks task #1 as done (Option 5)
-   → Task moves to completed list
-   
-3. User views current tasks (Option 4)
-   → Only 4 pending tasks shown
-   
-4. User views completed tasks (Option 6)
-   → Shows 1 completed task with ✅ indicator
-   
-5. User exits (Option 7)
-   → Summary: 4 pending, 1 completed
-```
-
-## 🎨 Visual Indicators
-
-- **⏳** - Pending/Active task
-- **✅** - Completed task
-- **❌** - Error message
-- **📊** - Statistics/Summary
-
-## 📝 Code Highlights
-
-### Error Handling
-```dart
-try {
-  await markTaskAsCompleted(taskNum - 1);
-} catch (e) {
-  print('❌ Error marking task as completed: $e');
-}
-```
-
-### Task Status Display
-```dart
-@override
-String toString() {
-  String status = isCompleted ? '✅' : '⏳';
-  return '$status Task: $title | Due: ${dueDate.day}/${dueDate.month}/${dueDate.year}';
-}
-```
-
-## 🎓 Skills Demonstrated
-
-- Understanding of Dart language fundamentals
-- Ability to write and manage asynchronous code
-- Real-world problem-solving for app development
-- State management with multiple data structures
-- Clean code practices and documentation
-- Version control with Git/GitHub
-- Boolean logic for status tracking
-- List manipulation (add, remove, iterate)
-- Readiness for Flutter and mobile development
-
-## 📚 Real-World Use Case
-
-Modern mobile applications constantly interact with:
-- Remote APIs
-- Cloud databases
-- Local storage
-- Network requests
-- User state management
-
-This project simulates such scenarios with added complexity of tracking task completion status, mirroring real-world to-do apps like:
-- Google Tasks
-- Microsoft To-Do
-- Todoist
-- Any.do
-
-## 🆕 Enhanced Features Summary
-
-| Feature | Description | Async Operation |
-|---------|-------------|-----------------|
-| **Load Tasks** | Fetch from "database" | 3 seconds |
-| **Add Task** | Save new task | 3 seconds |
-| **View Details** | Load task info | 2 seconds |
-| **Display Current** | Show pending only | Instant |
-| **Mark as Done** | Complete task | 3 seconds |
-| **View Completed** | Show completed | 2 seconds |
-
-## 🤝 Contributing
-
-This is an educational project. Feedback and suggestions are welcome!
-
-## 👨‍💻 Author
-
-**MAGDALEENA R**  
-App Development Course Mini Project  
-**SRM Institute Of Science and Technology,Vadapalani Campus**
-
-## 📄 License
-
-This project is created for educational purposes as part of an App Development course.
+   Or press **F5** in VS Code.
 
 ---
 
-### 🌟 Key Takeaways
+## Validation Rules
 
-- Asynchronous programming is essential for modern app development
-- `async`/`await` makes asynchronous code readable and maintainable
-- Dart's Future API enables non-blocking operations
-- Proper error handling ensures robust applications
-- State management is crucial for tracking user actions
-- Clean code structure improves maintainability
-- Boolean flags enable simple status tracking
-- List operations are fundamental to data management
+### Email Field
+- Cannot be empty → shows "Please enter your email"
+- Must contain `@` → shows "Please enter a valid email"
+
+### Password Field
+- Cannot be empty → shows "Please enter your password"
+- Must be at least 6 characters → shows "Password must be at least 6 characters"
 
 ---
 
-**Note**: This is a console-based application focusing on backend logic and asynchronous programming concepts. UI implementation is intentionally excluded to emphasize core Dart fundamentals and state management.
+## Built With
 
+- **Flutter** — UI framework
+- **Dart** — Programming language
+- **Material Design** — Widget library
+- **VS Code** — Development environment
 
+---
+
+## Future Enhancements
+
+- Add a registration screen
+- Connect login to a grade dashboard with SGPA/CGPA calculation
+- Add default student data for multiple semesters
+- Implement persistent storage for user accounts
+
+---
+
+## Author
+
+Built as a course project for App Development.
+
+---
+
+## License
+
+This project is for educational purposes.
