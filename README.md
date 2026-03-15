@@ -19,16 +19,6 @@ The app consists of **two screens**:
 
 ---
 
-## Screenshots
-
-| Intro Screen | Login Screen | Validation |
-|---|---|---|
-| ![Intro](screenshots/intro.png) | ![Login](screenshots/login.png) | ![Validation](screenshots/validation.png) |
-
-> Add your own screenshots by creating a `screenshots/` folder in the root of the project.
-
----
-
 ## Project Structure
 
 ```
