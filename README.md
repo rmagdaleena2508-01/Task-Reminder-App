@@ -110,6 +110,12 @@ task-reminder-app/
 └── GitHub_Link.txt                           # Repository URL
 ```
 
+## Screenshots
+<img width="2022" height="1334" alt="Screenshot 2026-03-18 221018" src="https://github.com/user-attachments/assets/6d109540-7ed8-4a97-b12e-56d341ef6d65" />
+<img width="2047" height="1323" alt="Screenshot 2026-03-18 221048" src="https://github.com/user-attachments/assets/41aa4b6d-e837-4465-8917-bcd25e0dd8e3" />
+<img width="2045" height="1265" alt="Screenshot 2026-03-18 221059" src="https://github.com/user-attachments/assets/df53276a-5c6f-4f29-886a-58af5ae19aa5" />
+
+
 ## 💻 Core Concepts Covered
 
 ### Dart Basics
